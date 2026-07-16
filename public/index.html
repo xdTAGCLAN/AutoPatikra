@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LT Vehicle Check</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="LT Vehicle Check home">
+        <span class="brand-mark">LT</span>
+        <span>
+          <strong>AutoPatikra</strong>
+          <small>Insurance register</small>
+        </span>
+      </a>
+      <nav class="topnav" aria-label="Primary navigation">
+        <a href="#report">Report</a>
+        <a href="#insurer">Insurer</a>
+        <a href="#details">Details</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="kicker">Lithuanian vehicle insurance lookup</p>
+          <h1>Check a vehicle by plate number</h1>
+          <p class="intro">
+            Search the Lithuanian insurance register and get a clean, app-style vehicle report with policy,
+            insurer, VIN and contact details in one place.
+          </p>
+        </div>
+
+        <form class="search-panel" id="plate-form">
+          <label for="plate">Plate number</label>
+          <div class="plate-row">
+            <span class="plate-prefix">LT</span>
+            <input id="plate" name="plate" inputmode="latin" autocomplete="off" placeholder="ABC123" />
+            <button type="submit">Check</button>
+          </div>
+          <p id="form-note">Example format: ABC123. The lookup is made live through cab.lt.</p>
+        </form>
+      </section>
+
+      <section class="status-band" aria-live="polite">
+        <div>
+          <span class="status-dot" id="status-dot"></span>
+          <strong id="status-title">Ready to search</strong>
+        </div>
+        <span id="status-detail">Enter a Lithuanian plate number to build the report.</span>
+      </section>
+
+      <section class="report-grid" id="report">
+        <article class="summary-card">
+          <div class="card-head">
+            <span>Vehicle</span>
+            <strong id="vehicle-result">Awaiting lookup</strong>
+          </div>
+          <figure class="vehicle-visual fallback" id="vehicle-visual">
+            <a id="vehicle-image-link" target="_blank" rel="noopener" aria-label="Open original image source">
+              <img id="vehicle-image" alt="" />
+            </a>
+            <figcaption>
+              <strong id="vehicle-image-title">Representative image</strong>
+              <span id="vehicle-image-note">A matching model image will appear after lookup.</span>
+            </figcaption>
+          </figure>
+          <div class="vehicle-plate" id="vehicle-plate">-</div>
+          <dl class="facts">
+            <div><dt>Brand</dt><dd id="vehicle-brand">-</dd></div>
+            <div><dt>Model</dt><dd id="vehicle-model">-</dd></div>
+            <div><dt>Type</dt><dd id="vehicle-type">-</dd></div>
+            <div><dt>VIN</dt><dd id="vehicle-vin">-</dd></div>
+            <div><dt>Year</dt><dd id="vehicle-year">-</dd></div>
+            <div><dt>US-spec</dt><dd id="vehicle-us-spec">-</dd></div>
+          </dl>
+        </article>
+
+        <article class="detail-card">
+          <div class="card-head">
+            <span>Policy</span>
+            <strong id="policy-state">Not checked</strong>
+          </div>
+          <dl class="facts">
+            <div><dt>Policy no.</dt><dd id="policy-no">-</dd></div>
+            <div><dt>Contract no.</dt><dd id="contract-no">-</dd></div>
+          </dl>
+        </article>
+
+        <article class="insurer-card" id="insurer">
+          <div class="card-head">
+            <span>Insurer</span>
+            <strong id="insurer-id">-</strong>
+          </div>
+          <div class="insurer-logo-wrap">
+            <img id="insurer-logo" alt="" />
+            <div>
+              <h2 id="insurer-name">No insurer loaded</h2>
+              <p id="insurer-contact">Run a lookup to see insurer contact details.</p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="subjects-section" id="details">
+        <div class="section-heading">
+          <p class="kicker">Register parties</p>
+          <h2>Subject details</h2>
+        </div>
+        <div class="subject-list" id="subject-list">
+          <article class="subject-row muted-row">
+            <strong>No subject data yet</strong>
+            <span>Results from the register will appear here.</span>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <template id="subject-template">
+      <article class="subject-row">
+        <div>
+          <strong data-name></strong>
+          <span data-address></span>
+        </div>
+        <dl>
+          <div><dt>Phone</dt><dd data-phone></dd></div>
+          <div><dt>Email</dt><dd data-email></dd></div>
+          <div><dt>Website</dt><dd data-www></dd></div>
+        </dl>
+      </article>
+    </template>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
